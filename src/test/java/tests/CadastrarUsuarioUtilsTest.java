@@ -27,14 +27,16 @@ public class CadastrarUsuarioUtilsTest {
 	@Test
 	public void cadastrarUsuarioUtils() {
 		
-		WebDriverWait wait = new WebDriverWait(driver, 5);
+		//WebDriverWait wait = new WebDriverWait(driver, 5);
 
 		driver.get("http://automationpractice.com/index.php");
 
 		util.clickPorCss("#header > div.nav > div > div > nav > div.header_user_info > a");
-		util.preencheCampoPorId("email_create", "everisbootcamp@qabeginner.com");
+		util.preencheCampoPorId("email_create", "everisbootcamp584645@qabeginner.com");
 		util.clickPorCss("button[id='SubmitCreate'] span");
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("id_gender2")));
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.id("id_gender2")));
+		util.waitExplicitoByID(5, "id_gender2");
+		
 		util.clickPorId("id_gender2");
 		util.preencheCampoPorId("customer_firstname", "July");
 		util.preencheCampoPorId("customer_lastname", "Sanders");
@@ -49,7 +51,8 @@ public class CadastrarUsuarioUtilsTest {
 		util.preencheCampoPorId("id_country", "United States");
 		util.preencheCampoPorId("phone_mobile", "9999999999");
 		util.clickPorId("submitAccount");
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[title='Orders'] span"))); 
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[title='Orders'] span"))); 
+		util.waitExplicitoByCSS(5, "a[title='Orders'] span");
 		WebElement validaTexto = driver.findElement(By.cssSelector("a[title='Orders'] span"));
 		Assert.assertEquals("ORDER HISTORY AND DETAILS", validaTexto.getText());
 

@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,9 +24,13 @@ public class CadastrarUsuarioPage {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		
 		driver.get("http://automationpractice.com/index.php");
+		
+		Random rand = new Random();
+		Integer n = rand.nextInt(1000);
+		String e_mail = "everisbootcamp" + n.toString() + "@mail.com";
 
 		util.clickPorCss("#header > div.nav > div > div > nav > div.header_user_info > a");
-		util.preencheCampoPorId("email_create", "everisbootcamp@qabeginner.com");
+		util.preencheCampoPorId("email_create", e_mail);
 		util.clickPorCss("button[id='SubmitCreate'] span");
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("id_gender2")));
 		util.clickPorId("id_gender2");
